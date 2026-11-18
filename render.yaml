@@ -1,0 +1,22 @@
+services:
+  - type: worker
+    name: leo-gold-tracker
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: UPDATE_MINUTES
+        value: "15"
+      - key: DAILY_REPORT_HOUR
+        value: "19"
+      - key: TIMEZONE
+        value: Asia/Ho_Chi_Minh
+      - key: DB_PATH
+        value: /var/data/gold_tracker.db
+      - key: REPORT_DIR
+        value: /var/data/reports
+      - key: ALERT_DEFAULT_PERCENT
+        value: "1.0"
